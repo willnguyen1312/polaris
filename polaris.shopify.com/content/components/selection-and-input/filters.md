@@ -40,7 +40,6 @@ The filters component relies on the accessibility features of multiple other com
 - [Text field](https://polaris.shopify.com/components/selection-and-input/text-field)
 - [Button](https://polaris.shopify.com/components/actions/button)
 - [Popover](https://polaris.shopify.com/components/overlays/popover)
-- [Sheet](https://polaris.shopify.com/components/deprecated/sheet)
 - [Collapsible](https://polaris.shopify.com/components/collapsible)
 
 ### Maintain accessibility with custom features

@@ -19,14 +19,9 @@ export function KitchenSink() {
   return Object.entries(stories)
     .filter(
       ([id]) =>
-        ![
-          'Modal',
-          'ContextualSaveBar',
-          'TopBar',
-          'Sheet',
-          'Frame',
-          'Loading',
-        ].includes(id.split(':')[0]),
+        !['Modal', 'ContextualSaveBar', 'TopBar', 'Frame', 'Loading'].includes(
+          id.split(':')[0],
+        ),
     )
     .map(([id, Story]) => {
       return (

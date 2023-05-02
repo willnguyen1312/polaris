@@ -236,9 +236,6 @@ export type {
   LegacyCardSubsectionProps,
 } from './components/LegacyCard';
 
-export {LegacyFilters} from './components/LegacyFilters';
-export type {LegacyFiltersProps} from './components/LegacyFilters';
-
 export {LegacyStack} from './components/LegacyStack';
 export type {LegacyStackProps} from './components/LegacyStack';
 
@@ -330,9 +327,6 @@ export {SettingToggle} from './components/SettingToggle';
 export type {SettingToggleProps} from './components/SettingToggle';
 
 export {DATA_ATTRIBUTE} from './components/shared';
-
-export {Sheet} from './components/Sheet';
-export type {SheetProps} from './components/Sheet';
 
 export {SkeletonBodyText} from './components/SkeletonBodyText';
 export type {SkeletonBodyTextProps} from './components/SkeletonBodyText';
