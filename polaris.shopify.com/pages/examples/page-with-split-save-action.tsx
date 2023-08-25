@@ -86,7 +86,7 @@ function PageExample() {
   };
 
   const splitButton = (
-    <ButtonGroup segmented>
+    <ButtonGroup variant="segmented">
       <Button
         size="large"
         onClick={() => {
