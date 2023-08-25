@@ -7,12 +7,13 @@ import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
-import {useFrame} from '../../../../utilities/frame';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
+import {useFrame} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {useFeatures} from '../../../../utilities/features';
+import {isInterface} from '../../../../utilities/is-interface';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.scss';
@@ -72,31 +73,29 @@ export function ContextualSaveBar({
       onClick={discardActionHandler}
       loading={discardAction.loading}
       disabled={discardAction.disabled}
-      accessibilityLabel={discardAction.content}
     >
       {discardActionContent}
     </Button>
   );
 
   const saveActionContent =
-    saveAction && saveAction.content
+    saveAction && 'content' in saveAction
       ? saveAction.content
       : i18n.translate('Polaris.ContextualSaveBar.save');
 
-  const saveActionMarkup = saveAction && (
-    <Button
-      variant="primary"
-      tone="success"
-      size={polarisSummerEditions2023 ? 'large' : undefined}
-      url={saveAction.url}
-      onClick={saveAction.onAction}
-      loading={saveAction.loading}
-      disabled={saveAction.disabled}
-      accessibilityLabel={saveAction.content}
-    >
-      {saveActionContent}
-    </Button>
-  );
+  const saveActionMarkup =
+    saveAction && !isInterface(saveAction) ? (
+      saveAction
+    ) : (
+      <Button
+        variant="primary"
+        tone="success"
+        size={polarisSummerEditions2023 ? 'large' : undefined}
+        {...saveAction}
+      >
+        {saveActionContent}
+      </Button>
+    );
 
   const width = getWidth(logo, 104);
 
@@ -146,7 +145,7 @@ export function ContextualSaveBar({
             <LegacyStack spacing="tight" wrap={false}>
               {secondaryMenu}
               {discardActionMarkup}
-              {saveActionMarkup}
+              <>{saveActionMarkup}</>
             </LegacyStack>
           </div>
         </div>
