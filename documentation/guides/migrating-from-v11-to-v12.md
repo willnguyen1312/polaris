@@ -4,7 +4,9 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 ## Table of Contents
 
-- [Quick migration guide](#quick-migration-guide)
+- [Migrating from v11 to v12](#migrating-from-v11-to-v12)
+  - [Table of Contents](#table-of-contents)
+  - [Quick migration guide](#quick-migration-guide)
 
 ## Quick migration guide
 
