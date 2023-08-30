@@ -240,7 +240,7 @@
 
 .primary {
   // stylelint-disable -- Button custom properties
-  --pc-button-icon-color: var(--p-color-icon-text-inverse);
+  --pc-button-icon-color: var(--p-color-text-inverse);
   --pc-button-color: var(--p-color-bg-primary);
   --pc-button-text: var(--p-color-text-on-color);
   --pc-button-color-hover: var(--p-color-bg-primary-hover);
@@ -275,7 +275,7 @@
   &:hover {
     // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- Button custom property
     --pc-button-text: var(--p-color-text-inverse);
-    --pc-button-icon-color: var(--p-color-text-inverse-subdued);
+    --pc-button-icon-color: var(--p-color-text-inverse);
     // stylelint-enable
 
     &::before {
@@ -380,7 +380,7 @@
     // stylelint-disable-next-line selector-max-class -- set disabled styles
     &.disabled {
       // stylelint-disable -- Button custom property
-      --pc-button-icon-color: var(--pc-button-text);
+      --pc-button-icon-color: var(--p-color-icon-on-color);
       // stylelint-enable
 
       // stylelint-disable-next-line selector-max-specificity, selector-max-class -- set display
