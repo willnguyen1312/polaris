@@ -1,28 +1,69 @@
+@function is-map($var) {
+  @return type-of($var) == 'map';
+}
+
+@function is-null($var) {
+  @return type-of($var) == 'null';
+}
+
+@function get-default($default: null, $key: null) {
+  $value: null;
+  @if is-map($default) {
+    @if not is-null($key) {
+      $value: map-get($default, $key);
+    }
+  } @else {
+    $value: $default;
+  }
+  @return if(is-null($value), 'initial', $value);
+}
+
 @mixin scope-custom-property(
   $componentName,
   $componentProp,
-  $responsively: false
+  $responsively: false,
+  $default: null
 ) {
   @if $responsively {
     // stylelint-disable -- Polaris component custom properties
-    --pc-#{$componentName}-#{$componentProp}-xs: initial;
-    --pc-#{$componentName}-#{$componentProp}-sm: initial;
-    --pc-#{$componentName}-#{$componentProp}-md: initial;
-    --pc-#{$componentName}-#{$componentProp}-lg: initial;
-    --pc-#{$componentName}-#{$componentProp}-xl: initial;
+    --pc-#{$componentName}-#{$componentProp}-xs: #{get-default($default, 'xs')};
+    --pc-#{$componentName}-#{$componentProp}-sm: #{get-default($default, 'sm')};
+    --pc-#{$componentName}-#{$componentProp}-md: #{get-default($default, 'md')};
+    --pc-#{$componentName}-#{$componentProp}-lg: #{get-default($default, 'lg')};
+    --pc-#{$componentName}-#{$componentProp}-xl: #{get-default($default, 'xl')};
   } @else {
-    --pc-#{$componentName}-#{$componentProp}: initial;
+    --pc-#{$componentName}-#{$componentProp}: #{get-default($default)};
   }
 }
 
-@mixin non-responsive-prop($componentName, $componentProp, $declarationProp) {
-  @include scope-custom-property($componentName, $componentProp);
+@mixin non-responsive-prop(
+  $componentName,
+  $componentProp,
+  $declarationProp,
+  $default: null
+) {
+  @include scope-custom-property(
+    $componentName,
+    $componentProp,
+    false,
+    $default
+  );
 
   #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp});
 }
 
-@mixin responsive-props($componentName, $componentProp, $declarationProp) {
-  @include scope-custom-property($componentName, $componentProp, true);
+@mixin responsive-props(
+  $componentName,
+  $componentProp,
+  $declarationProp,
+  $default: null
+) {
+  @include scope-custom-property(
+    $componentName,
+    $componentProp,
+    true,
+    $default
+  );
 
   #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
 
