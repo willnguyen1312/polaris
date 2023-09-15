@@ -21,67 +21,103 @@ describe('<Grid />', () => {
   const lgAreas = ['lg1', 'lg2', 'lg3'];
   const xlAreas = ['xl1', 'xl2', 'xl3'];
 
-  it('applies grid-template-areas as custom properties', () => {
-    const grid = mountWithApp(
-      <Grid
-        areas={{
-          xs: xsAreas,
-          sm: smAreas,
-          md: mdAreas,
-          lg: lgAreas,
-          xl: xlAreas,
-        }}
-      />,
-    );
+  describe('applies grid-template-areas as custom properties', () => {
+    it('responsively', () => {
+      const grid = mountWithApp(
+        <Grid
+          areas={{
+            xs: xsAreas,
+            sm: smAreas,
+            md: mdAreas,
+            lg: lgAreas,
+            xl: xlAreas,
+          }}
+        />,
+      );
 
-    expect(grid).toContainReactComponent('div', {
-      style: {
-        '--pc-grid-areas-xs': formatAreas(xsAreas),
-        '--pc-grid-areas-sm': formatAreas(smAreas),
-        '--pc-grid-areas-md': formatAreas(mdAreas),
-        '--pc-grid-areas-lg': formatAreas(lgAreas),
-        '--pc-grid-areas-xl': formatAreas(xlAreas),
-      } as React.CSSProperties,
+      expect(grid).toContainReactComponent('div', {
+        style: {
+          '--pc-grid-areas-xs': formatAreas(xsAreas),
+          '--pc-grid-areas-sm': formatAreas(smAreas),
+          '--pc-grid-areas-md': formatAreas(mdAreas),
+          '--pc-grid-areas-lg': formatAreas(lgAreas),
+          '--pc-grid-areas-xl': formatAreas(xlAreas),
+        } as React.CSSProperties,
+      });
+    });
+
+    it('non-responsively', () => {
+      const grid = mountWithApp(<Grid areas={xsAreas} />);
+
+      expect(grid).toContainReactComponent('div', {
+        style: {
+          '--pc-grid-areas-xs': formatAreas(xsAreas),
+        } as React.CSSProperties,
+      });
     });
   });
 
-  it('renders inline custom properties for custom columns', () => {
-    const grid = mountWithApp(
-      <Grid columns={{xs: 1, sm: 3, md: 7, lg: 12, xl: 12}} />,
-    );
+  describe('renders inline custom properties for custom columns', () => {
+    it('responsively', () => {
+      const grid = mountWithApp(
+        <Grid columns={{xs: 1, sm: 3, md: 7, lg: 12, xl: 12}} />,
+      );
 
-    expect(grid).toContainReactComponent('div', {
-      style: {
-        '--pc-grid-columns-xs': 1,
-        '--pc-grid-columns-sm': 3,
-        '--pc-grid-columns-md': 7,
-        '--pc-grid-columns-lg': 12,
-        '--pc-grid-columns-xl': 12,
-      } as React.CSSProperties,
+      expect(grid).toContainReactComponent('div', {
+        style: {
+          '--pc-grid-columns-xs': 1,
+          '--pc-grid-columns-sm': 3,
+          '--pc-grid-columns-md': 7,
+          '--pc-grid-columns-lg': 12,
+          '--pc-grid-columns-xl': 12,
+        } as React.CSSProperties,
+      });
+    });
+
+    it('non-responsively', () => {
+      const grid = mountWithApp(<Grid columns={3} />);
+
+      expect(grid).toContainReactComponent('div', {
+        style: {
+          '--pc-grid-columns-xs': 3,
+        } as React.CSSProperties,
+      });
     });
   });
 
-  it('renders inline custom properties for custom gap', () => {
-    const grid = mountWithApp(
-      <Grid
-        gap={{
-          xs: 'var(--p-space-1)',
-          sm: 'var(--p-space-1)',
-          md: 'var(--p-space-2)',
-          lg: 'var(--p-space-4)',
-          xl: 'var(--p-space-4)',
-        }}
-      />,
-    );
+  describe('renders inline custom properties for custom gap', () => {
+    it('responsively', () => {
+      const grid = mountWithApp(
+        <Grid
+          gap={{
+            xs: '1',
+            sm: '1',
+            md: '2',
+            lg: '4',
+            xl: '4',
+          }}
+        />,
+      );
 
-    expect(grid).toContainReactComponent('div', {
-      style: {
-        '--pc-grid-gap-xs': 'var(--p-space-1)',
-        '--pc-grid-gap-sm': 'var(--p-space-1)',
-        '--pc-grid-gap-md': 'var(--p-space-2)',
-        '--pc-grid-gap-lg': 'var(--p-space-4)',
-        '--pc-grid-gap-xl': 'var(--p-space-4)',
-      } as React.CSSProperties,
+      expect(grid).toContainReactComponent('div', {
+        style: {
+          '--pc-grid-gap-xs': 'var(--p-space-1)',
+          '--pc-grid-gap-sm': 'var(--p-space-1)',
+          '--pc-grid-gap-md': 'var(--p-space-2)',
+          '--pc-grid-gap-lg': 'var(--p-space-4)',
+          '--pc-grid-gap-xl': 'var(--p-space-4)',
+        } as React.CSSProperties,
+      });
+    });
+
+    it('non-responsively', () => {
+      const grid = mountWithApp(<Grid gap="3" />);
+
+      expect(grid).toContainReactComponent('div', {
+        style: {
+          '--pc-grid-gap-xs': 'var(--p-space-3)',
+        } as React.CSSProperties,
+      });
     });
   });
 
