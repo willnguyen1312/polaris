@@ -12,7 +12,7 @@ import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import type {Range} from '../../../../utilities/index-provider/types';
 import styles from '../../IndexTable.scss';
 
-type RowType = 'data' | 'subheader';
+type RowType = 'data' | 'subheader' | 'child';
 type RowStatus = 'success' | 'subdued' | 'critical' | 'warning';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
@@ -115,7 +115,8 @@ export const Row = memo(function Row({
 
   const rowClassName = classNames(
     styles.TableRow,
-    rowType === 'subheader' && styles['TableRow-subheader'],
+    (rowType === 'subheader' && styles['TableRow-subheader']) ||
+      (rowType === 'child' && styles['TableRow-child']),
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
