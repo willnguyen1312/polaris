@@ -56,7 +56,7 @@ export const Row = memo(function Row({
   status,
   disabled,
   selectionRange,
-  rowType = 'data',
+  rowType = 'child',
   accessibilityLabel,
   onNavigation,
   onClick,
