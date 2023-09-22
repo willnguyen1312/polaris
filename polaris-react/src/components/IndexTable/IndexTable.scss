@@ -288,10 +288,6 @@ $loading-panel-height: 53px;
     .TableCell-first div {
       transform: translateX(25%);
     }
-
-    &.TableRow-borderless {
-      border-top: none;
-    }
   }
 
   &.TableRow-hovered:not(.TableRow-disabled) {
