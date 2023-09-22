@@ -21,6 +21,8 @@ export interface RowProps {
   children: React.ReactNode;
   /** A unique identifier for the row */
   id: string;
+  /** Whether the row is has divider */
+  showBorderTopForChildRow: boolean;
   /** Whether the row is selected */
   selected?: boolean | 'indeterminate';
   /** The zero-indexed position of the row. Used for Shift key multi-selection */
@@ -51,6 +53,7 @@ export const Row = memo(function Row({
   children,
   selected,
   id,
+  showBorderTopForChildRow = true,
   position,
   subdued,
   status,
@@ -117,6 +120,9 @@ export const Row = memo(function Row({
     styles.TableRow,
     (rowType === 'subheader' && styles['TableRow-subheader']) ||
       (rowType === 'child' && styles['TableRow-child']),
+    rowType === 'child' &&
+      !showBorderTopForChildRow &&
+      styles['TableRow-borderless'],
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
