@@ -290,13 +290,6 @@ $loading-panel-height: 53px;
       left: calc(
         var(--pc-checkbox-offset) + var(--pc-index-table-checkbox-child-offset)
       );
-      @media #{$p-breakpoints-sm-down} {
-        position: sticky;
-        left: calc(
-          var(--pc-checkbox-offset) +
-            var(--pc-index-table-checkbox-child-offset)
-        );
-      }
     }
   }
 
