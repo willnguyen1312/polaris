@@ -283,13 +283,22 @@ $loading-panel-height: 53px;
         var(--pc-index-table-checkbox-offset-right) +
         var(--pc-index-table-checkbox-width)
     );
+
     .TableCell-first {
       left: var(--pc-index-table-checkbox-child-offset);
     }
+
     .TableCell-first + .TableCell {
       left: calc(
         var(--pc-checkbox-offset) + var(--pc-index-table-checkbox-child-offset)
       );
+      @media #{$p-breakpoints-sm-down} {
+        position: sticky;
+        left: calc(
+          var(--pc-checkbox-offset) +
+            var(--pc-index-table-checkbox-child-offset)
+        );
+      }
     }
   }
 
