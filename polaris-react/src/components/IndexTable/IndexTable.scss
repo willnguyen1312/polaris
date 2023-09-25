@@ -284,6 +284,14 @@ $loading-panel-height: 53px;
         var(--pc-index-table-checkbox-width)
     );
 
+    #{$se23} & {
+      // stylelint-disable -- Polaris component custom properties
+      --pc-index-table-checkbox-child-offset: calc(
+        var(--pc-index-table-checkbox-offset-left) +
+          var(--pc-index-table-checkbox-width)
+      );
+    }
+
     .TableCell-first {
       left: var(--pc-index-table-checkbox-child-offset);
     }
