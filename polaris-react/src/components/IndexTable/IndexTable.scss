@@ -275,17 +275,21 @@ $loading-panel-height: 53px;
   &.TableRow-child {
     cursor: default;
     // stylelint-disable -- Polaris component custom properties
-    --pc-index-table-checkbox-offset-left: var(--p-space-3);
-    --pc-index-table-checkbox-offset-right: var(--p-space-2);
+    --pc-index-table-checkbox-offset-left: var(--p-space-4);
     --pc-index-table-checkbox-width: var(--p-space-5);
+    --pc-index-table-checkbox-border-width: var(--p-border-width-2);
     --pc-index-table-checkbox-child-offset: calc(
       var(--pc-index-table-checkbox-offset-left) +
-        var(--pc-index-table-checkbox-offset-right) +
+        var(--pc-index-table-checkbox-border-width) +
         var(--pc-index-table-checkbox-width)
     );
 
     #{$se23} & {
       // stylelint-disable -- Polaris component custom properties
+      --pc-index-table-checkbox-offset-left: var(--p-space-3); //12px+ 20px
+      --pc-index-table-checkbox-border-width: var(
+        --p-border-width-1-experimental
+      );
       --pc-index-table-checkbox-child-offset: calc(
         var(--pc-index-table-checkbox-offset-left) +
           var(--pc-index-table-checkbox-width)
