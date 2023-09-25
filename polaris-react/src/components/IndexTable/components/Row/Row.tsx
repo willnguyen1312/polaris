@@ -115,8 +115,8 @@ export const Row = memo(function Row({
 
   const rowClassName = classNames(
     styles.TableRow,
-    (rowType === 'subheader' && styles['TableRow-subheader']) ||
-      (rowType === 'child' && styles['TableRow-child']),
+    rowType === 'subheader' && styles['TableRow-subheader'],
+    rowType === 'child' && styles['TableRow-child'],
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
