@@ -298,6 +298,9 @@ $loading-panel-height: 53px;
 
     .TableCell-first {
       left: var(--pc-index-table-checkbox-child-offset);
+      @media #{$p-breakpoints-sm-down} {
+        left: var(--p-space-2);
+      }
     }
 
     .TableCell-first + .TableCell {
@@ -307,8 +310,7 @@ $loading-panel-height: 53px;
       @media #{$p-breakpoints-sm-down} {
         position: sticky;
         left: calc(
-          var(--pc-checkbox-offset) +
-            var(--pc-index-table-checkbox-child-offset)
+          var(--p-space-6) + var(--pc-index-table-checkbox-child-offset)
         );
       }
     }
