@@ -66,8 +66,8 @@ export const DoDont = ({children}: PropsWithChildren) => {
     <Fragment>
       {prefix}
       <div className={styles.DoDont}>
-        {dos.length ? <Do title={null}>{dos}</Do> : null}
-        {donts.length ? <Dont title={null}>{donts}</Dont> : null}
+        {dos.length ? <Do>{dos}</Do> : null}
+        {donts.length ? <Dont>{donts}</Dont> : null}
       </div>
     </Fragment>
   );
@@ -75,7 +75,11 @@ export const DoDont = ({children}: PropsWithChildren) => {
 
 export const Do = ({children}: DoDontProps) => {
   return (
-    <DirectiveCard minHeight="100%" status={DirectiveStatusName.Do}>
+    <DirectiveCard
+      className={styles.Do}
+      minHeight="100%"
+      status={DirectiveStatusName.Do}
+    >
       {children}
     </DirectiveCard>
   );
@@ -83,7 +87,11 @@ export const Do = ({children}: DoDontProps) => {
 
 export const Dont = ({children}: DoDontProps) => {
   return (
-    <DirectiveCard minHeight="100%" status={DirectiveStatusName.Dont}>
+    <DirectiveCard
+      className={styles.Dont}
+      minHeight="100%"
+      status={DirectiveStatusName.Dont}
+    >
       {children}
     </DirectiveCard>
   );
